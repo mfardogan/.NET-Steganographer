@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Steganography
@@ -8,12 +7,12 @@ namespace Steganography
     {
         #region FIELDS
         bool[] bits;
-        const char TRUELOGIC = '1';
-        const char FALSELOGIC = '0';
+        const char TRUE = '1';
+        const char FALSE = '0';
         #endregion
         public MemoryWatcher(byte number) : this()
               => bits = Convert.ToString(number, 2)
-                .PadLeft(8, FALSELOGIC).Select(dig => dig == TRUELOGIC ? true : false)
+                .PadLeft(8, FALSE).Select(dig => dig == TRUE ? true : false)
                 .ToArray();
         public bool this[int index]
         {
@@ -22,17 +21,18 @@ namespace Steganography
         }
 
         public int? Key { get; set; }
-        public byte Decimal
-        {
-            get
-            {
-                byte data = Convert.ToByte(new string(bits.Select(bit => bit ? TRUELOGIC : FALSELOGIC).ToArray()), 2);
-                return !Key.HasValue ? data : (byte)(data ^ Key.Value);
-            }
-        }
 
         public static implicit operator MemoryWatcher(byte number) => new MemoryWatcher(number);
         public static implicit operator MemoryWatcher(bool[] bits) => new MemoryWatcher() { bits = bits };
-        public static implicit operator int(MemoryWatcher memoryWatcher) => Convert.ToInt32(memoryWatcher.Decimal);
+
+        public static implicit operator int(MemoryWatcher memoryWatcher)
+        {
+            string binaryString = new string(memoryWatcher.bits
+                .Select(bit => bit ? TRUE : FALSE)
+                .ToArray());
+
+            byte asByte = Convert.ToByte(binaryString, 2);
+            return !memoryWatcher.Key.HasValue ? asByte : (byte)(asByte ^ memoryWatcher.Key.Value);
+        }
     }
 }
