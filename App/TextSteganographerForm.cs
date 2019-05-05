@@ -33,10 +33,9 @@ namespace App
                 IConfidential information = new TextConfidential(textBox1.Text)
                 {
                     Key = (int)numericUpDown1.Value,
-                    Image = bitmapBase,
                 };
 
-                SecretInformationSteganographer = new SecretInformationStaganographer(information);
+                SecretInformationSteganographer = new ImageCoveredSteganography(information, bitmapBase);
                 IConfidentialResult result = await SecretInformationSteganographer.Inject(tokenSource.Token);
 
                 pictSteganographedImage.Image = result.Image;

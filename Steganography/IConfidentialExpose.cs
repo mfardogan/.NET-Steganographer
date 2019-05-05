@@ -2,6 +2,6 @@
 {
     public interface IConfidentialExpose
     {
-        byte[] ConfidentialRawData { get; set; }
+        byte[] RawData { get; set; }
     }
 }
