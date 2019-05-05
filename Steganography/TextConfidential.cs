@@ -1,15 +1,13 @@
-﻿using System.Drawing;
-using System.Text;
+﻿using System.Text;
 
 namespace Steganography
 {
     public class TextConfidential : IConfidential
     {
         public TextConfidential(string text)
-            => ConfidentialRawData = Encoding.UTF8.GetBytes(text);
+            => RawData = Encoding.UTF8.GetBytes(text);
         public int? Key { get; set; }
-        public Bitmap Image { get; set; }
-        public byte[] ConfidentialRawData { get; }
+        public byte[] RawData { get; }
 
     }
 }
