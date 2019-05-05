@@ -52,7 +52,7 @@
     <Compile Include="MemoryQuadruple.cs" />
     <Compile Include="MemoryWatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecretInformationSteganographyExposer.cs" />
+    <Compile Include="ConfidentialDataExposer.cs" />
     <Compile Include="Steganographer.cs" />
     <Compile Include="SteganographyException.cs" />
     <Compile Include="TextConfidential.cs" />

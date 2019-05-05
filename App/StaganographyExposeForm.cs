@@ -35,7 +35,7 @@ namespace App
                     return;
                 }
 
-                data = SecretInformationSteganographyExposer.Attract(bitmap1, (int)numericUpDown1.Value);
+                data = ConfidentialDataExposer.Attract(bitmap1, (int)numericUpDown1.Value);
 
                 if (radioButton1.Checked)
                 {

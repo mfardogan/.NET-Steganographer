@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Steganography
 {
-    public static class SecretInformationSteganographyExposer
+    public static class ConfidentialDataExposer
     {
         static IEnumerable<MemoryQuadruple> GetQuadruples(Bitmap cover, int? key)
         {
@@ -51,9 +51,7 @@ namespace Steganography
         {
             List<MemoryQuadruple> bitQuadruples = GetQuadruples(cover, key).ToList();
             IEnumerable<byte> bytes = bitQuadruples.GetRange(4, bitQuadruples.Count - 4).Select(x => x.Attract(key: key));
-
-            IConfidentialExpose steganographyExpose = new ConfidentialExpose(bytes.ToArray());
-            return steganographyExpose;
+            return new ConfidentialExpose(bytes.ToArray());
         }
     }
 }
