@@ -40,14 +40,14 @@ namespace App
                 if (radioButton1.Checked)
                 {
 
-                    using (MemoryStream memoryStream = new MemoryStream(data.RawData))
+                    using (MemoryStream memoryStream = new MemoryStream(data.ConfidentialRawData))
                     {
                         pictResultImage.Image = Image.FromStream(memoryStream);
                     }
                 }
                 else
                 {
-                    txtResult.Text = Encoding.UTF8.GetString(data.RawData);
+                    txtResult.Text = Encoding.UTF8.GetString(data.ConfidentialRawData);
                 }
             }
             catch
@@ -70,7 +70,7 @@ namespace App
                 var save = new SaveFileDialog() { Filter = "Png File|*.png;", FileName = "original.png" };
                 if (save.ShowDialog() == DialogResult.OK)
                 {
-                    File.WriteAllBytes(save.FileName, data.RawData);
+                    File.WriteAllBytes(save.FileName, data.ConfidentialRawData);
                 }
             }
             else

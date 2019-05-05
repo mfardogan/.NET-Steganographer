@@ -13,7 +13,7 @@ namespace App
             InitializeComponent();
         }
 
-        protected ImageCoveredSteganography SecretInformationSteganographer { get; set; }
+        protected SecretInformationStaganographer SecretInformationSteganographer { get; set; }
 
         protected Bitmap bitmapBase = null;
         protected CancellationTokenSource tokenSource = null;

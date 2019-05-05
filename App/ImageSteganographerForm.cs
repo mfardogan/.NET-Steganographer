@@ -39,9 +39,10 @@ namespace App
                 IConfidential information = new ImageConfidential(bitmapSecret)
                 {
                     Key = (int)numericUpDown1.Value,
+                    Image = bitmapBase,
                 };
 
-                SecretInformationSteganographer = new ImageCoveredSteganography(information, bitmapBase);
+                SecretInformationSteganographer = new SecretInformationStaganographer(information);
                 IConfidentialResult result = await SecretInformationSteganographer.Inject(tokenSource.Token);
 
                 pictSteganographedImage.Image = result.Image;

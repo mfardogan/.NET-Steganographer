@@ -2,7 +2,7 @@
 {
     public class ConfidentialExpose : IConfidentialExpose
     {
-        public ConfidentialExpose(byte[] data) => RawData = data;
-        public byte[] RawData { get; set; }
+        public ConfidentialExpose(byte[] data) => ConfidentialRawData = data;
+        public byte[] ConfidentialRawData { get; set; }
     }
 }

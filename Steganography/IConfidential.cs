@@ -5,6 +5,8 @@ namespace Steganography
     public interface IConfidential
     {
         int? Key { get; set; }
-        byte[] RawData { get; }
+        Bitmap Image { get; set; }
+        byte[] ConfidentialRawData { get; }
+
     }
 }
